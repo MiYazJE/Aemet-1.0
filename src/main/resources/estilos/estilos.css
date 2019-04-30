@@ -1,0 +1,80 @@
+.root {
+    -fx-background-color: #fff;
+    -fx-font-family: "Dosis";
+}
+
+.contenedorIzquierdo {
+    -fx-background-color: #35393d;
+}
+.contenedorDerecho {
+    -fx-background-color: #4c5359;
+}
+
+.textoMostrar {
+    -fx-fill: white;
+}
+
+.titulo {
+    -fx-background-color: #185d5e;
+}
+
+.whiteBox {
+    -jfx-focus-color: white;
+    -jfx-unfocus-color: white;
+    -fx-prompt-text-fill: white;
+    -fx-text-inner-color: white;
+    -fx-text-fill: white;
+    -fx-font-size: 15px;
+}
+
+.cell {
+    -fx-text-fill: white;
+}
+.list-cell {
+    -fx-background-color: #35393d;
+    -fx-cursor: HAND;
+    -fx-font-size: 15px;
+}
+.list-cell:filled:hover {
+     -fx-background-color: #185d5e;
+}
+
+.inputTextField {
+    -fx-text-inner-color: white;
+    -fx-text-fill: white;
+    -fx-prompt-text-fill: white;
+    -fx-font-size: 15px;
+}
+
+.icono {
+    -fx-text-fill: white;
+}
+
+.panelBusqueda {
+    -fx-background-color: #b2bcc4;
+}
+
+.wrap_btnClose:hover {
+    -fx-background-color: red;
+}
+
+.wrap_btnMinimize:hover {
+    -fx-background-color: #565b63;
+}
+
+.caja-lista-visitados {
+    -fx-border-color: #ccc;
+    -fx-cursor: HAND;
+    -fx-font-family: System;
+}
+.caja-lista-visitados:hover {
+    -fx-background-color: #939da5;
+}
+
+.temperaturaMin {
+    -fx-fill: blue;
+}
+
+.temperaturaMax {
+    -fx-fill: red;
+}

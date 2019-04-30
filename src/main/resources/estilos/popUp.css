@@ -1,0 +1,35 @@
+.text-area {
+    -fx-background-insets: 0;
+    -fx-background-color: transparent, white, transparent, white;
+    -fx-text-fill: gray;
+    -fx-font-size: 17px;
+    -fx-border-color: white;
+}
+
+.text-area .content {
+    -fx-background-color: transparent, white, transparent, white;
+}
+
+.text-area:focused .content {
+    -fx-background-color: transparent, white, transparent, white;
+}
+
+.text-area:focused {
+    -fx-highlight-fill: #7ecfff;
+}
+
+.icon {
+    -fx-text-fill: red;
+}
+
+.button {
+    -fx-border-radius: 5px;
+    -fx-background-color: red;
+    -fx-font-size: 15px;
+    -fx-cursor: HAND;
+}
+.button:hover {
+    -fx-border-color: red;
+    -fx-text-fill: red;
+    -fx-background-color: white;
+}

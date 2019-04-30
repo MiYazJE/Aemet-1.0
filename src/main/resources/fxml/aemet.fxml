@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="690.0" prefWidth="1188.0" stylesheets="@../estilos/estilos.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controladores.ControladorMain">
+   <children>
+      <VBox layoutX="-5.0" prefHeight="692.0" prefWidth="274.0" styleClass="contenedorIzquierdo">
+         <children>
+            <AnchorPane prefHeight="692.0" prefWidth="301.0">
+               <children>
+                  <GridPane layoutX="23.0" layoutY="74.0" prefHeight="324.0" prefWidth="251.0">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints maxHeight="173.0" minHeight="10.0" prefHeight="51.0" valignment="CENTER" vgrow="SOMETIMES" />
+                      <RowConstraints maxHeight="162.0" minHeight="5.0" prefHeight="57.0" valignment="CENTER" vgrow="SOMETIMES" />
+                      <RowConstraints maxHeight="150.0" minHeight="10.0" prefHeight="47.0" valignment="CENTER" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <JFXComboBox fx:id="comboPoblaciones" onAction="#cargarTiempo" prefHeight="36.0" prefWidth="239.0" promptText="Seleccione una población" styleClass="whiteBox" GridPane.rowIndex="2">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </JFXComboBox>
+                        <JFXComboBox fx:id="comboProvincias" onAction="#cargarPoblaciones" prefHeight="36.0" prefWidth="241.0" promptText="Seleccione una província" styleClass="whiteBox" GridPane.rowIndex="1">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </JFXComboBox>
+                        <JFXComboBox fx:id="comboAutonomias" onAction="#cargarProvincias" prefHeight="41.0" prefWidth="244.0" promptText="Seleccione una C.Autónoma" styleClass="whiteBox">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </JFXComboBox>
+                     </children>
+                  </GridPane>
+                  <Label alignment="CENTER" layoutY="-2.0" prefHeight="70.0" prefWidth="274.0" styleClass="titulo" text="AEMET" textFill="WHITE">
+                     <font>
+                        <Font name="Dosis SemiBold" size="38.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="DEFAULT" />
+                     </cursor>
+                  </Label>
+               </children>
+               <cursor>
+                  <Cursor fx:constant="DEFAULT" />
+               </cursor>
+            </AnchorPane>
+         </children>
+      </VBox>
+      <VBox layoutX="269.0" layoutY="67.0" prefHeight="625.0" prefWidth="1022.0" styleClass="contenedorDerecho" AnchorPane.topAnchor="67.0">
+         <children>
+            <AnchorPane fx:id="tiempoHoy" prefHeight="244.0" prefWidth="927.0">
+               <children>
+                  <Text fx:id="textNombrePoblacion" layoutX="14.0" layoutY="67.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="textoMostrar" wrappingWidth="861.0">
+                     <font>
+                        <Font name="Segoe UI Semilight" size="33.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="textFecha" layoutX="14.0" layoutY="112.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="textoMostrar" wrappingWidth="566.0">
+                     <font>
+                        <Font name="Segoe UI Semilight" size="17.0" />
+                     </font>
+                  </Text>
+                  <ImageView fx:id="imagenTiempoAhora" fitHeight="87.0" fitWidth="93.0" layoutX="14.0" layoutY="136.0" pickOnBounds="true" preserveRatio="true" />
+                  <Text fx:id="textTemperatura" layoutX="142.0" layoutY="198.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="textoMostrar" wrappingWidth="155.0">
+                     <font>
+                        <Font size="57.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="1.0" layoutY="292.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="textoMostrar" text="EL TIEMPO 1-7 DÍAS" wrappingWidth="282.0">
+                     <font>
+                        <Font size="23.0" />
+                     </font>
+                  </Text>
+                  <Label fx:id="textSensacion" layoutX="142.0" layoutY="223.0" prefHeight="30.0" prefWidth="222.0" styleClass="textoMostrar" textFill="WHITE">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+               </children>
+               <cursor>
+                  <Cursor fx:constant="DEFAULT" />
+               </cursor>
+            </AnchorPane>
+            <HBox prefHeight="340.0" prefWidth="927.0" style="-fx-background-color: #585e63;">
+               <children>
+                  <AnchorPane fx:id="datosTiempo" prefHeight="320.0" prefWidth="919.0" />
+               </children>
+            </HBox>
+         </children>
+         <cursor>
+            <Cursor fx:constant="DEFAULT" />
+         </cursor>
+      </VBox>
+      <HBox layoutX="269.0" layoutY="-2.0" prefHeight="70.0" prefWidth="1022.0">
+         <children>
+            <AnchorPane fx:id="barTop" accessibleRole="BUTTON" prefHeight="70.0" prefWidth="1026.0" styleClass="panelBusqueda">
+               <children>
+                  <JFXTextField fx:id="busqueda" focusColor="BLACK" layoutX="14.0" layoutY="18.0" prefHeight="35.0" prefWidth="208.0" promptText="Buscar una población" unFocusColor="#030303">
+                     <cursor>
+                        <Cursor fx:constant="DEFAULT" />
+                     </cursor>
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </JFXTextField>
+                  <AnchorPane fx:id="cajaBotonCerrar" layoutX="965.0" onMouseClicked="#salir" prefHeight="28.0" prefWidth="57.0" styleClass="wrap_btnClose" AnchorPane.bottomAnchor="42.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <ImageView fx:id="imagenCerrar" fitHeight="28.0" fitWidth="28.0" layoutX="14.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="14.0">
+                          <Image url="@../imagenes/close.png" />
+                        </ImageView>
+                     </children>
+                  </AnchorPane>
+                  <ImageView fitHeight="28.0" fitWidth="29.0" layoutX="190.0" layoutY="24.0" onMousePressed="#pasarelaCargarTiempo" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../imagenes/busqueda.png" />
+                     </image>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </ImageView>
+                  <AnchorPane fx:id="cajaBotonMinimizar" layoutX="910.0" onMouseClicked="#minimizar" prefHeight="28.0" prefWidth="55.0" styleClass="wrap_btnMinimize">
+                     <children>
+                        <ImageView fx:id="imagenMinimizar" fitHeight="23.0" fitWidth="28.0" layoutX="16.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../imagenes/minimize.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </AnchorPane>
+               </children>
+               <cursor>
+                  <Cursor fx:constant="DEFAULT" />
+               </cursor>
+            </AnchorPane>
+         </children>
+      </HBox>
+   </children>
+   <cursor>
+      <Cursor fx:constant="DEFAULT" />
+   </cursor>
+</AnchorPane>
