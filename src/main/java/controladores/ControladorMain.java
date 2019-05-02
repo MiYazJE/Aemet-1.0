@@ -70,11 +70,11 @@ public class ControladorMain implements Initializable {
 
 
 	/**
-	 * Salir de la aplicación
+	 * Salir de la aplicaciÃ³n
 	 */
 	public void salir() {
 		Stage stage = (Stage) busqueda.getScene().getWindow();
-		// EFECTO FADE OUT AL FINALIZAR LA APLICACIÓN
+		// EFECTO FADE OUT AL FINALIZAR LA APLICACIÃ“N
 		Timeline timeline = new Timeline();
 		KeyFrame key = new KeyFrame(Duration.millis(1000),
 				       new KeyValue(stage.getScene().getRoot().opacityProperty(), 0));
@@ -105,7 +105,7 @@ public class ControladorMain implements Initializable {
 		} catch (Exception e) {};
 	}
 	/**
-	 * Cargar las predicciones, en caso de haber algún error en la poblacion seleccionada
+	 * Cargar las predicciones, en caso de haber algÃºn error en la poblacion seleccionada
 	 * mostrar un error.
 	 * @param buscar
 	 */
@@ -148,14 +148,14 @@ public class ControladorMain implements Initializable {
 		// Seteamos la imagen
 		imagenTiempoAhora.setImage(imagen);
 
-		// Añadir la temperatura en el text "textTemperatura"
-		textTemperatura.setText(poblacion.temperaturaHoy() + "º");
+		// AÃ±adir la temperatura en el text "textTemperatura"
+		textTemperatura.setText(poblacion.temperaturaHoy() + "Âº");
 
-		// Añadir la sensacion termica
+		// AÃ±adir la sensacion termica
 		int sensacion = predicciones.get(0).getSensacionTermica().obtenerMediaHoras();
-		textSensacion.setText("Sensación de " + sensacion + "º");
+		textSensacion.setText("SensaciÃ³n de " + sensacion + "Âº");
 
-		// Mostrar el panel con la información ya cargada
+		// Mostrar el panel con la informaciÃ³n ya cargada
 		tiempoHoy.setVisible(true);
 		datosTiempo.setVisible(true);
 
@@ -173,7 +173,7 @@ public class ControladorMain implements Initializable {
 
 		for (int i = 0; i < 7; i++) {
 
-			// Crear la caja que va a contener el tiempo del día
+			// Crear la caja que va a contener el tiempo del dÃ­a
 			AnchorPane caja = new AnchorPane();
 			caja.setPrefSize(cajaWidth, 310);
 			caja.setLayoutX(posYcaja);
@@ -182,10 +182,10 @@ public class ControladorMain implements Initializable {
 			// Aumentamos la posicion de la caja para crear un borde con la siguiente caja que creeemos
 			posYcaja += 135 + 10;
 
-			// posicion Y del ultimo componente añadido
+			// posicion Y del ultimo componente aÃ±adido
 			int posicionY = 0;
 
-			// Añadir el día
+			// AÃ±adir el dÃ­a
 			Text dia = new Text(obtenerDia(i));
 			dia.setWrappingWidth(cajaWidth);
 			dia.setLayoutY(50);
@@ -194,7 +194,7 @@ public class ControladorMain implements Initializable {
 
 			caja.getChildren().add(dia);
 
-			// Añadir el dia del mes
+			// AÃ±adir el dia del mes
 			Text diaMes = new Text(obtenerDiaMes(i));
 			diaMes.setWrappingWidth(cajaWidth);
 			diaMes.setLayoutY((posicionY + 20));
@@ -203,7 +203,7 @@ public class ControladorMain implements Initializable {
 
 			caja.getChildren().add(diaMes);
 
-			// Añadir imagen del estado del cielo
+			// AÃ±adir imagen del estado del cielo
 			ImageView imagenEstado = new ImageView();
 			String estadoCielo = poblacion.descripcionCieloAhora(i);
 			Image imagen = obtenerImagenCielo(estadoCielo);
@@ -216,7 +216,7 @@ public class ControladorMain implements Initializable {
 
 			caja.getChildren().add(imagenEstado);
 
-			// En caso de haber lluvía se indicara la probabilidad de precipitación
+			// En caso de haber lluvÃ­a se indicara la probabilidad de precipitaciÃ³n
 			if (estadoCielo.contains("lluvia")) {
 				Text probPrecipitacion = new Text(poblacion.getProbabilidadPrecipitacion(i) + "%");
 				probPrecipitacion.setLayoutY(posicionY + 80);
@@ -228,12 +228,12 @@ public class ControladorMain implements Initializable {
 				                           "fx-font-size: 12px;");
 			}
 
-			// Argegar temperatura máxima/minimia
+			// Argegar temperatura mÃ¡xima/minimia
 			Text temperatura = new Text();
 			temperatura.setWrappingWidth(cajaWidth);
 			temperatura.setTextAlignment(TextAlignment.CENTER);
-			temperatura.setText(predicciones.get(i).getTemperatura().getMaxima() + "º / " +
-								predicciones.get(i).getTemperatura().getMinima() + "º");
+			temperatura.setText(predicciones.get(i).getTemperatura().getMaxima() + "Âº / " +
+								predicciones.get(i).getTemperatura().getMinima() + "Âº");
 			temperatura.setLayoutY(posicionY + 120);
 			posicionY += 120;
 
@@ -261,7 +261,7 @@ public class ControladorMain implements Initializable {
 	}
 
 	/**
-	 * Devuelve un String con el dia y el mes sumados al día que se le pasa como parámetro más la fecha actual
+	 * Devuelve un String con el dia y el mes sumados al dÃ­a que se le pasa como parÃ¡metro mÃ¡s la fecha actual
 	 * @param diaPlus
 	 * @return String
 	 */
@@ -287,10 +287,9 @@ public class ControladorMain implements Initializable {
 	private String obtenerDia(int dia) {
 		if (dia == 0) return "HOY";
 		LocalDateTime ldt = LocalDateTime.now().plusDays(dia);
-		DateTimeFormatter formmat = DateTimeFormatter.ofPattern("dd");
-		int diaSemana = Integer.valueOf(formmat.format(ldt));
-		String[] dias = {"DOMINGO", "LUNES", "MARTES", "MIÉRCOLES", "JUEVES", "VIERNES", "SÁBADO"};
-		return dias[diaSemana % 7];
+		int day = ldt.getDayOfWeek().getValue();
+		String[] dias = {"LUNES", "MARTES", "MIÃ‰RCOLES", "JUEVES", "VIERNES", "SÃBADO", "DOMINGO"};
+		return dias[(day - 1)];
 	}
 
 
@@ -342,7 +341,7 @@ public class ControladorMain implements Initializable {
 	}
 
 	/**
-	 * Cargar en el combobox todos los nombres de las autonomías de España
+	 * Cargar en el combobox todos los nombres de las autonomÃ­as de EspaÃ±a
 	 */
 	private void cargarComboAutonomias() {
 		pais = new Pais();
@@ -404,7 +403,7 @@ public class ControladorMain implements Initializable {
 	}
 
 	/**
-	 * Cargar la predicción de la poblacion seleccionada
+	 * Cargar la predicciÃ³n de la poblacion seleccionada
 	 */
 	public Poblacion cargarDatosPoblacion(String buscar) {
 		// Obtener el codigo de poblacion
@@ -413,7 +412,7 @@ public class ControladorMain implements Initializable {
 	}
 
 	/**
-	 * Cargar todas las poblaciones de España para ayudar al usuario a elegir una elección en el input
+	 * Cargar todas las poblaciones de EspaÃ±a para ayudar al usuario a elegir una elecciÃ³n en el input
 	 * textField. Cargo un mapa<String:"NombrePoblacion", String:"codigoPoblacion"> y
 	 * un ArraList<String:"NombrePoblacion">.
 	 */
@@ -448,7 +447,7 @@ public class ControladorMain implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 
-		// Ocultar el panel donde se mostraran los datos del tiempo al iniciar la aplicación
+		// Ocultar el panel donde se mostraran los datos del tiempo al iniciar la aplicaciÃ³n
 		datosTiempo.setVisible(false);
 		tiempoHoy.setVisible(false);
 
@@ -477,7 +476,7 @@ public class ControladorMain implements Initializable {
 	}
 
 	/**
-	 * Cambiar el brillo de la imágen
+	 * Cambiar el brillo de la imÃ¡gen
 	 */
 	private void cambiarBrilloImagen(ImageView imagen, int value) {
 		ColorAdjust blanco = new ColorAdjust();
@@ -487,10 +486,10 @@ public class ControladorMain implements Initializable {
 
 	/**
 	 * Genera una lista de 3 poblaciones/ciudades con sus predicciones cargadas.
-	 * Para que cuándo el usuario visite una localidad la lista se actualize.
+	 * Para que cuÃ¡ndo el usuario visite una localidad la lista se actualize.
 	 */
 	private void cargarListaVisitados() {
-		Poblacion valencia = cargarDatosPoblacion("València");
+		Poblacion valencia = cargarDatosPoblacion("ValÃ¨ncia");
 		Poblacion madrid = cargarDatosPoblacion("Madrid");
 		Poblacion barcelona = cargarDatosPoblacion("Barcelona");
 		listaVisitados = new ArrayList<Poblacion>(Arrays.asList(valencia, madrid, barcelona));
@@ -547,12 +546,12 @@ public class ControladorMain implements Initializable {
 			nombre.setLayoutX(48);
 			nombre.setWrappingWidth(140);
 
-			Text tempMaxima = new Text(listaVisitados.get(i).getPredicciones().get(i).getTemperatura().getMaxima() + "º");
+			Text tempMaxima = new Text(listaVisitados.get(i).getPredicciones().get(i).getTemperatura().getMaxima() + "Âº");
 			tempMaxima.setLayoutY(49);
 			tempMaxima.setLayoutX(48);
 			tempMaxima.setWrappingWidth(40);
 			
-			Text tempMinima = new Text(listaVisitados.get(i).getPredicciones().get(i).getTemperatura().getMinima() + "º");
+			Text tempMinima = new Text(listaVisitados.get(i).getPredicciones().get(i).getTemperatura().getMinima() + "Âº");
 			tempMinima.setLayoutY(49);
 			tempMinima.setLayoutX(80);
 			tempMinima.setWrappingWidth(40);
