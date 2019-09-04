@@ -1,5 +1,5 @@
 <h1 align="center">AEMET 1.0</h1>
 
 <div align="center">
-  <img src="captura.png" />
+  <img src="app.png" />
 </div>
